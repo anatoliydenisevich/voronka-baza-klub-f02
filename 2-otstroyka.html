@@ -281,11 +281,6 @@ a:focus-visible{outline:2px solid var(--brand); outline-offset:3px; border-radiu
   .bar-in{padding-left:2.5rem; padding-right:2.5rem}
 }
 
-@media (max-width:880px){
-  .author{grid-template-columns:1fr; gap:1.3rem; padding:1.15rem}
-  .author img{width:100%; max-width:none}
-}
-
 @media (max-width:640px){
   .wrap{margin:0 auto; border-radius:0; padding:0 1.15rem 2.25rem; box-shadow:none}
   .bar-in{padding-left:1.15rem; padding-right:1.15rem}
@@ -328,6 +323,11 @@ a:focus-visible{outline:2px solid var(--brand); outline-offset:3px; border-radiu
   width:11px; height:11px; border-radius:50%;
   background:var(--brand-soft);
   border:2px solid var(--brand); box-sizing:border-box;
+}
+
+@media (max-width:880px){
+  .author{grid-template-columns:1fr; gap:1.3rem; padding:1.15rem}
+  .author img{width:100%; max-width:none}
 }
 
 /* шапка статьи без брендинга: шаг уходит влево */
