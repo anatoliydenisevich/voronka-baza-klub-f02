@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F4F7FB">
+<title>База.Клуб - профессиональная среда для риэлтора</title>
+<meta name="description" content="Каждую неделю новая рабочая тема, живые разборы, практика сильных агентов, тренировки и готовые инструменты. 1 990 ₽ в месяц.">
+<meta property="og:title" content="База.Клуб - профессиональная среда для риэлтора">
+<meta property="og:description" content="Каждую неделю новая рабочая тема, живые разборы, практика сильных агентов, тренировки и готовые инструменты. 1 990 ₽ в месяц.">
+<meta property="og:type" content="article">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================================
+   БАЗА.КЛУБ - воронка. Дизайн-система.
+   Снята с интерфейса клуба: светлый фон, белые карточки r24,
+   синий #2E7BF0 как основной, золотой - статус «Резидент».
+   ========================================================================== */
+
+:root{
+  --bg:          #F4F7FB;   /* фон страницы, как в приложении */
+  --surface:     #FFFFFF;   /* карточки */
+  --surface-2:   #F1F4F9;   /* вложенные плашки */
+  --hero-a:      #E9F1FE;   /* градиент первого экрана */
+  --hero-b:      #FFFFFF;
+
+  --brand:       #2E7BF0;
+  --brand-deep:  #1F63CC;
+  --brand-soft:  #E8F0FE;
+
+  --gold:        #E8A33D;   /* статус «Резидент» */
+  --gold-soft:   #FDF3E3;
+
+  --ink:         #101828;   /* заголовки */
+  --body:        #364152;   /* основной текст */
+  --muted:       #6B7A90;   /* вторичный */
+  --faint:       #97A3B6;
+  --line:        #E4EAF2;
+
+  --r-card: 24px;
+  --r-el:   14px;
+
+  --measure: 62rem;
+  --step: clamp(1.05rem, .97rem + .42vw, 1.3rem);
+
+  --f-display: 'Manrope', system-ui, sans-serif;
+  --f-body:    'Inter', system-ui, sans-serif;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--body);
+  font-family:var(--f-body);
+  font-size:var(--step);
+  line-height:1.76;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ---------- прогресс чтения ---------- */
+.progress{
+  position:fixed; top:0; left:0; height:3px; width:0%;
+  background:var(--brand); z-index:60; transition:width .1s linear;
+}
+
+/* ---------- шапка ---------- */
+.bar{
+  position:sticky; top:0; z-index:50;
+  background:rgba(244,247,251,.88);
+  backdrop-filter:saturate(150%) blur(14px);
+  -webkit-backdrop-filter:saturate(150%) blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.bar-in{
+  max-width:var(--measure); margin:0 auto; padding:.7rem 4rem;
+  display:flex; align-items:center; justify-content:space-between; gap:1rem;
+}
+.wordmark{display:flex; align-items:center; gap:.6rem; text-decoration:none}
+.wordmark .mark{
+  width:34px; height:34px; border-radius:50%; flex:none;
+  background:var(--brand); display:grid; place-items:center;
+}
+.wordmark .mark svg{width:18px; height:18px; display:block}
+.wordmark .txt{display:flex; flex-direction:column; line-height:1.1}
+.wordmark .name{
+  font-family:var(--f-display); font-weight:800; font-size:.86rem;
+  letter-spacing:.04em; color:var(--ink);
+}
+.wordmark .tag{font-size:.6rem; color:var(--brand); font-weight:600}
+.bar-step{
+  font-size:.66rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--muted); background:var(--surface-2);
+  padding:.36rem .7rem; border-radius:99px; white-space:nowrap;
+}
+
+/* ---------- карточка контента ---------- */
+.wrap{
+  max-width:var(--measure); margin:1.75rem auto;
+  background:var(--surface); border-radius:var(--r-card);
+  padding:0 4rem 3.5rem;
+  box-shadow:0 1px 2px rgba(16,24,40,.04), 0 12px 32px -12px rgba(16,24,40,.10);
+}
+
+/* ---------- первый экран ---------- */
+.hero{
+  margin:0 -4rem 3rem; padding:3.5rem 4rem 3rem;
+  background:linear-gradient(150deg,var(--hero-a) 0%,var(--hero-b) 62%);
+  border-radius:var(--r-card) var(--r-card) 0 0;
+}
+.eyebrow{
+  display:inline-block; margin:0 0 1.5rem;
+  font-size:.68rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase;
+  color:var(--brand); background:var(--brand-soft);
+  padding:.4rem .8rem; border-radius:99px;
+}
+h1{
+  font-family:var(--f-display); font-weight:800;
+  font-size:clamp(1.72rem, 1.15rem + 2.8vw, 3.15rem);
+  line-height:1.13; letter-spacing:-.028em; color:var(--ink);
+  margin:0 0 1.5rem; text-wrap:balance;
+}
+.deck{
+  margin:0 0 .7rem; padding-left:.95rem;
+  border-left:3px solid var(--brand); border-radius:2px;
+  font-size:1.08rem; line-height:1.55; color:var(--muted); font-weight:500;
+}
+.deck:last-of-type{margin-bottom:0}
+.meta{
+  margin:2rem 0 0; font-size:.72rem; font-weight:600;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--faint);
+}
+
+/* ---------- подпись: 15 штрихов, один твой ----------
+   Отсылка к «вы у него пятнадцатый». Разделитель разделов. */
+.tally{display:flex; gap:7px; align-items:flex-end; margin:3.25rem 0 2.5rem; height:22px}
+.tally i{display:block; width:2px; height:11px; background:var(--line); border-radius:1px}
+.tally i.me{height:22px; width:3px; background:var(--brand)}
+
+/* ---------- текст ---------- */
+h2{
+  font-family:var(--f-display); font-weight:800;
+  font-size:clamp(1.3rem, 1.08rem + 1.05vw, 1.78rem);
+  line-height:1.26; letter-spacing:-.02em; color:var(--ink);
+  margin:0 0 1.25rem; text-wrap:balance;
+}
+h3{
+  font-family:var(--f-display); font-weight:700; font-size:1.14rem;
+  line-height:1.4; color:var(--ink); margin:2.4rem 0 .75rem;
+}
+p{margin:0 0 1.25rem}
+strong{font-weight:700; color:var(--ink)}
+em{font-style:italic; color:var(--muted)}
+
+ul,ol{margin:0 0 1.45rem; padding-left:0; list-style:none}
+ol{counter-reset:n}
+li{position:relative; padding-left:1.65rem; margin-bottom:.65rem}
+ul li::before{
+  content:""; position:absolute; left:.3rem; top:.72em;
+  width:6px; height:6px; background:var(--brand); border-radius:50%;
+}
+ol li{counter-increment:n}
+ol li::before{
+  content:counter(n); position:absolute; left:0; top:.1em;
+  font-family:var(--f-display); font-weight:800; font-size:.78rem; color:var(--brand);
+}
+
+/* ---------- реплика Максима ---------- */
+blockquote{
+  margin:2rem 0; padding:1.3rem 1.5rem;
+  background:var(--surface-2); border-radius:var(--r-el);
+  border-left:3px solid var(--brand);
+  font-size:1.01rem; line-height:1.6; color:var(--ink);
+}
+blockquote p:last-child{margin-bottom:0}
+
+/* ---------- реплики: то, что говорят вслух ---------- */
+.chat{margin:1.6rem 0 1.9rem; display:flex; flex-direction:column; gap:.5rem}
+.chat b{
+  align-self:flex-start; max-width:min(82%, 34rem);
+  background:var(--surface-2); border-radius:16px 16px 16px 5px;
+  padding:.62rem .95rem; font-weight:400; font-size:.95rem;
+  line-height:1.45; color:var(--body);
+}
+.chat b:nth-child(even){
+  align-self:flex-end; border-radius:16px 16px 5px 16px;
+  background:var(--brand); color:#fff;
+}
+
+/* ---------- доказательство: реальные реплики из чата ---------- */
+.src{
+  display:flex; align-items:center; gap:.55rem; margin:1.75rem 0 .8rem;
+  font-size:.66rem; font-weight:700; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--gold);
+}
+.src::before{content:""; width:16px; height:2px; background:var(--gold); border-radius:2px}
+.chat.evidence{margin-top:0}
+.chat.evidence b:nth-child(even){background:var(--gold-soft); color:var(--body)}
+
+/* ---------- готовая реплика для звонка ---------- */
+.script{
+  margin:1rem 0; padding:1.1rem 1.3rem 1.1rem 2.7rem;
+  background:var(--surface); border:1.5px solid var(--brand-soft);
+  border-radius:var(--r-el); position:relative;
+  font-size:.99rem; line-height:1.6; color:var(--ink);
+}
+.script::before{
+  content:"\201C"; position:absolute; left:.85rem; top:.32rem;
+  font-family:var(--f-display); font-weight:800; font-size:2rem;
+  color:var(--brand); line-height:1;
+}
+
+.money{font-weight:700; color:var(--brand); font-variant-numeric:tabular-nums}
+
+/* ---------- цена: стиль статуса «Резидент» ---------- */
+.price{
+  text-align:center; margin:2.25rem 0; padding:2.25rem 1.5rem;
+  background:var(--gold-soft); border:1.5px solid rgba(232,163,61,.28);
+  border-radius:var(--r-card);
+}
+.price .num{
+  display:block; font-family:var(--f-display); font-weight:800;
+  font-size:clamp(2.3rem,1.7rem + 3vw,3.2rem);
+  line-height:1; letter-spacing:-.035em; color:var(--ink);
+}
+.price .per{
+  display:block; margin-top:.85rem; font-size:.72rem; font-weight:700;
+  letter-spacing:.1em; text-transform:uppercase; color:#A9761F;
+}
+
+/* ---------- CTA ---------- */
+.cta{margin:2.5rem 0}
+.cta a{
+  display:flex; align-items:center; justify-content:center; gap:.5rem;
+  padding:1.05rem 1.6rem; background:var(--brand); color:#fff;
+  font-family:var(--f-display); font-weight:700; font-size:1.01rem;
+  text-decoration:none; border-radius:var(--r-el);
+  box-shadow:0 6px 18px -6px rgba(46,123,240,.55);
+  transition:background .15s ease, transform .15s ease, box-shadow .15s ease;
+}
+.cta a:hover{background:var(--brand-deep); transform:translateY(-1px);
+  box-shadow:0 10px 24px -8px rgba(46,123,240,.6)}
+.cta a:active{transform:translateY(0)}
+.cta .sub{
+  display:block; text-align:center; margin-top:.8rem;
+  font-size:.72rem; color:var(--faint);
+}
+
+/* ---------- финал ---------- */
+.endmark{
+  display:flex; align-items:center; justify-content:center; gap:.55rem;
+  margin:2.75rem 0 1rem;
+  font-family:var(--f-display); font-weight:800; font-size:1.2rem;
+  letter-spacing:.05em; color:var(--ink);
+}
+.endmark::before{
+  content:""; width:26px; height:26px; border-radius:50%; background:var(--brand);
+}
+
+footer{
+  max-width:var(--measure); margin:0 auto 2.75rem; padding:2rem 4rem 0;
+  font-size:.74rem; line-height:1.95; color:var(--faint); text-align:center;
+}
+footer a{color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line)}
+footer a:hover{color:var(--brand); border-color:var(--brand)}
+
+/* ---------- доступность ---------- */
+a:focus-visible{outline:2px solid var(--brand); outline-offset:3px; border-radius:6px}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important; scroll-behavior:auto !important}
+}
+
+@media (max-width:1060px){
+  .wrap{padding:0 2.5rem 2.75rem}
+  .hero{margin:0 -2.5rem 2.5rem; padding:2.75rem 2.5rem 2.5rem}
+  footer{padding:1.75rem 2.5rem 0}
+  .bar-in{padding-left:2.5rem; padding-right:2.5rem}
+}
+
+@media (max-width:880px){
+  .author{grid-template-columns:1fr; gap:1.3rem; padding:1.15rem}
+  .author img{width:100%; max-width:none}
+}
+
+@media (max-width:640px){
+  .wrap{margin:0 auto; border-radius:0; padding:0 1.15rem 2.25rem; box-shadow:none}
+  .bar-in{padding-left:1.15rem; padding-right:1.15rem}
+  .hero{margin:0 -1.15rem 2rem; padding:2rem 1.15rem 1.85rem; border-radius:0}
+  footer{padding:1.5rem 1.15rem 0}
+  .chat b{max-width:94%}
+  .script{padding-left:2.4rem}
+}
+
+/* ---------- карточка эксперта ---------- */
+.author{
+  display:grid; grid-template-columns:340px 1fr; gap:2.25rem; align-items:start;
+  margin:1.75rem 0 2rem; padding:1.6rem;
+  background:linear-gradient(150deg,var(--hero-a) 0%,var(--surface) 70%);
+  border:1px solid var(--brand-soft); border-radius:var(--r-card);
+}
+.author img{
+  width:100%; height:auto; display:block;   /* исходные пропорции, без обрезки */
+  border-radius:var(--r-el);
+  box-shadow:0 10px 28px -12px rgba(16,24,40,.4);
+}
+.author .who{min-width:0}
+.author .nm{
+  font-family:var(--f-display); font-weight:800;
+  font-size:1.6rem; line-height:1.16; letter-spacing:-.02em;
+  color:var(--ink); margin:0 0 .35rem;
+}
+.author .tt{
+  font-size:.92rem; line-height:1.45; font-weight:600;
+  color:var(--brand); margin:0 0 1rem;
+}
+.author ul{margin:0; padding:0; list-style:none}
+.author li{
+  padding-left:1.5rem; margin-bottom:.55rem;
+  font-size:.97rem; line-height:1.55; color:var(--body);
+}
+.author li:last-child{margin-bottom:0}
+.author li::before{
+  content:""; position:absolute; left:0; top:.42em;
+  width:11px; height:11px; border-radius:50%;
+  background:var(--brand-soft);
+  border:2px solid var(--brand); box-sizing:border-box;
+}
+
+/* шапка статьи без брендинга: шаг уходит влево */
+.bar-in.solo{justify-content:flex-start; padding-top:.6rem; padding-bottom:.6rem}
+
+</style>
+</head>
+<body>
+<div class="progress" id="p"></div>
+
+<header class="bar">
+  <div class="bar-in">
+<a class="wordmark" href="#top">
+      <span class="mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3.5 10.4 12 3.6l8.5 6.8V19a1.6 1.6 0 0 1-1.6 1.6H5.1A1.6 1.6 0 0 1 3.5 19z"/>
+          <path d="M9.4 20.6v-5.4h5.2v5.4"/>
+        </svg>
+      </span>
+      <span class="txt">
+        <span class="name">БАЗА.КЛУБ</span>
+        <span class="tag">платформа для риэлторов</span>
+      </span>
+    </a>
+    <span class="bar-step">03 / 03</span>
+  </div>
+</header>
+
+<main id="top">
+  <article class="wrap">
+    <div class="hero">
+      <p class="eyebrow">Часть 3 из 3</p>
+      <h1>База.Клуб - профессиональная среда, в которой риэлтор собирает своё отличие от рынка</h1>
+      <p class="deck">Чтобы собственник видел разницу между вами и агентом за <span class="money">50 тысяч</span> ещё до разговора о комиссии</p>
+      <p class="deck">Каждую неделю новая рабочая тема: живые разборы, практика сильных агентов, тренировки, готовые инструменты и документы</p>
+      <p class="deck"><span class="money">1 990 ₽</span> в месяц. Отмена в любой момент через бот</p>
+      
+    </div>
+    <div class="cta"><a href="https://t.me/bazarealtorclub_bot" target="_blank" rel="noopener">Стать резидентом База.Клуб →</a><span class="sub">Ежемесячное автопродление · Отмена через бот в любой момент</span></div>
+<h2>Три варианта. Предлагаю выбрать осознанно</h2>
+<p>Если вы дочитали до этой страницы, значит, тема вас касается.</p>
+<p>Дальше есть три варианта, и я предлагаю выбрать осознанно.</p>
+<p><strong>Первый.</strong> Оставить как есть. Работать дальше, периодически снижать комиссию, когда собственник давит, и списывать это на рынок. Так работает большая часть агентов, и на жизнь этим зарабатывают.</p>
+<p><strong>Второй.</strong> Собирать своё отличие самостоятельно. Читать, смотреть, пробовать, ошибаться, доходить до всего своим опытом. Путь рабочий. Я сам так и шёл. Только он занимает годы, и часть уроков стоит денег: несостоявшихся сделок, потерянных клиентов, комиссии, которую отдали, потому что не нашли аргумента.</p>
+<p><strong>Третий.</strong> Собирать то же самое, но регулярно подсматривая, как это уже сделали другие. Не вместо своей работы, а параллельно ей.</p>
+<p>Клуб про третий вариант.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Что такое База.Клуб</h2>
+<p>Это подписка на профессиональную среду. Не курс, который надо пройти от первого урока до последнего.</p>
+<p>Каждую неделю внутри идёт новая рабочая тема. Отстройка от конкурентов, работа с покупателем, переговоры, привлечение клиентов, личный бренд, работа с более высоким чеком, сложные сделки. Темы меняются вместе с реальными задачами рынка.</p>
+<p>Вы не обязаны потреблять всё. Появилась задача - взяли нужное.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Что происходит каждый месяц</h2>
+<p><strong>4 живых встречи:</strong></p>
+<ul><li>эфир со мной по теме недели;</li><li>практическая тренировка, где отрабатываются конкретные навыки;</li><li>приглашённый эксперт;</li><li>мастермайнд с разбором рабочих ситуаций.</li></ul>
+<p><strong>4 подкаста</strong> по теме месяца.</p>
+<p><strong>Новые гайды, чек-листы, шаблоны и документы.</strong></p>
+<p><strong>Разборы кейсов и ответы на вопросы</strong> по вашим ситуациям из практики.</p>
+<p><strong>Челленджи</strong> - когда нужно не посмотреть, а сделать.</p>
+<p>Приглашённых экспертов я подбираю сам, под тему. Это практикующие агенты и руководители: люди, которые собрали своё отличие и могут объяснить, как именно.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Больше 120 материалов, которые уже лежат внутри</h2>
+<p>Кроме еженедельной программы, у резидентов есть доступ к базе материалов.</p>
+<p><strong>Больше 120 материалов:</strong></p>
+<ul><li>53 записи живых эфиров;</li><li>40 подкастов;</li><li>22 гайда и чек-листа;</li><li>7 комплектов документов.</li></ul>
+<p><strong>6 курсов, 63 урока.</strong> Отдельно от базы материалов.</p>
+<p>Среди них - курс по Telegram для экспертов и брендов на 36 уроков. Курс по продвижению объектов на Авито. Хоумстейджинг квартир для инвесторов. Обмен: от теории к практике. Аванс, задаток, обеспечительный платёж - что выбрать риэлтору. Одобрение сложных клиентов: как распознать риски до подачи заявки.</p>
+<p>Отдельно скажу про гайды, потому что они прямо про то, о чём были обе статьи. Внутри уже лежат разборы по защите комиссии, по снижению собственника в цене, по пакетным предложениям, по самопрезентации, по доверию, по сложным переговорам, по возражениям продавца и покупателя.</p>
+<p>То есть инструменты из второй части - это не то, что вам предстоит придумывать с нуля. Часть уже разобрана и оформлена.</p>
+<p>При этом я бы не измерял ценность клуба количеством часов. Большая библиотека полезна только тогда, когда вы умеете достать из неё нужную вещь в нужный момент.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Когда нужна конкретная помощь по сделке</h2>
+<p>Клубом пользуются не только для развития вообще. Иногда нужен вполне конкретный ответ сегодня.</p>
+<ul><li>Появилась сложная ситуация по сделке.</li><li>Нужен документ, а составлять с нуля некогда.</li><li>Возник юридический вопрос.</li><li>Непонятен налоговый момент.</li><li>Хочется посмотреть, как коллеги решали похожий кейс.</li></ul>
+<p>Внутри есть комплекты документов, разборы сложных сделок, а также юрист и налоговый специалист.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Резиденты из других городов и зачем они вам</h2>
+<p>Агентство остаётся агентством, руководитель руководителем.</p>
+<p>Клуб добавляет второй круг. Резиденты работают в разных городах, компаниях и сегментах. Кто-то силён в работе с собственниками, кто-то с покупателями, кто-то давно работает с инвесторами, кто-то развивает личный бренд, кто-то умеет заходить в более высокий чек.</p>
+<p>Здесь бессмысленно искать единственно правильный способ. Полезно видеть варианты: один агент делает так, второй говорит «у меня этот подход не работает, я делаю иначе», третий показывает третий вариант. А вы решаете, что подходит вашему рынку.</p>
+<p>Плюс чисто практическая вещь: партнёры в других регионах и передача клиентов между городами.</p>
+<p>Из отзывов резидентов:</p>
+<blockquote><p>«С некоторыми спикерами я никогда не познакомилась бы больше нигде».</p></blockquote>
+<blockquote><p>«Равнение на лучших».</p></blockquote>
+<blockquote><p>«Постоянное обучение, быть в курсе от лучших, желание развиваться и не отставать, мотивация становиться профессионалом».</p></blockquote>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Возражения, которые я слышу чаще всего</h2>
+<p><strong>«У меня уже есть хорошее агентство»</strong></p>
+<p>Отлично, и менять его не нужно. Хорошее агентство даёт огромное количество практики, особенно в первые годы.</p>
+<p>Но вспомните мысль из второй части. Отстроиться от рынка, глядя только на свой офис, невозможно, потому что там все учились по тем же скриптам, что и вы. Клуб - второй профессиональный контур, а не замена первому.</p>
+<p><strong>«Я найду всё это бесплатно»</strong></p>
+<p>Многое - да. В Telegram и на YouTube информации огромное количество, и я не буду рассказывать, что какие-то знания есть только у нас.</p>
+<p>Вопрос в том, сколько времени уйдёт, чтобы найти нужного человека, отфильтровать нормальный материал, понять, применим ли он вообще, связать несколько источников и наконец попробовать в работе.</p>
+<p>Один из самых точных запросов, которые я слышу от агентов: «сжатый материал по делу». Вот это ближе к нашей логике.</p>
+<p><strong>«Мне не нужен ещё один курс»</strong></p>
+<p>Возможно, и не нужен. Клуб не надо проходить. Здесь нет задачи однажды поставить галочку «закончил».</p>
+<p>Курс заканчивается. Профессиональная среда остаётся рядом, пока она вам полезна.</p>
+<p><strong>«У меня нет времени всё это смотреть»</strong></p>
+<p>И не надо. Это, пожалуй, самое важное.</p>
+<p>Материалов внутри много, но ставить себе задачу «надо посмотреть всё» бессмысленно и вредно. У вас работа, клиенты, показы, сделки. Никакой пользы не будет, если развитие превратится в ещё один список невыполненных дел.</p>
+<p>Используйте клуб как рабочий стол. Нужны переговоры - берёте переговоры. Решили заняться кейсбуком - смотрите разбор по кейсам. Сложная сделка - ищете нужный кейс или задаёте вопрос. Остальное подождёт.</p>
+<p>Одна из резиденток описала это точнее, чем я:</p>
+<blockquote><p>«Информации ровно столько, чтобы не перегружать... ощущение, что я каждый день делаю тренажёр по развитию себя в профессии».</p></blockquote>
+<p><strong>«А если тема месяца мне не актуальна?»</strong></p>
+<p>Такое будет. Темы идут по расписанию, а ваши задачи по расписанию не приходят.</p>
+<p>Поэтому библиотека и работает отдельно от темы недели. Живые эфиры - это ритм и новое, база материалов - это ответ под текущую задачу. Одно не заменяет другое.</p>
+<div class="cta"><a href="https://t.me/bazarealtorclub_bot" target="_blank" rel="noopener">Стать резидентом за 1 990 ₽ в месяц →</a><span class="sub">Ежемесячное автопродление · Отмена через бот в любой момент</span></div>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Что говорят резиденты</h2>
+<blockquote><p>«Именно обучение с Клуба реализовала в сделки».</p></blockquote>
+<p>Мне здесь нравится слово «реализовала». Не посмотрела, не сохранила, не сказала «было полезно». Взяла и использовала.</p>
+<blockquote><p>«Самое ценное для меня - это знания. Иногда это совсем новая тема, иногда иной взгляд на знакомые вещи».</p></blockquote>
+<blockquote><p>«Энергия единомышленников, постоянная динамика развития, новые навыки, самоконтроль над базовыми знаниями, вектор развития. Моя личная точка роста!»</p></blockquote>
+<blockquote><p>«Клуб даёт толчок к действиям, информация воспринимается легко».</p></blockquote>
+<blockquote><p>«В клубе я нахожу максимум полезных инструментов для практики и получаю правильный эмоциональный настрой, необходимый для работы».</p></blockquote>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Кому подойдёт</h2>
+<p>Вы работаете риэлтором не первый год. Первые сделки провели, базовые вещи понимаете.</p>
+<p>И вам знакомо: собственник давит по комиссии, а аргументов не хватает. Клиент говорит «я подумаю» и уходит. Вы понимаете, что звучите примерно как все остальные, но непонятно, что конкретно с этим делать.</p>
+<p>Если хочется собрать своё отличие и перестать конкурировать ценой - формат вам подойдёт.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Кому не подойдёт</h2>
+<p>Если вы вчера пришли в недвижимость и вам нужна последовательная программа «профессия с нуля» - подписка не лучшее первое решение.</p>
+<p>Если нужен один конечный курс с точкой «прошёл и закончил» - это другой формат.</p>
+<p>И если вы ищете обещание конкретного дохода или количества сделок, такого обещания здесь нет. Я об этом говорил во второй части: отстройка не заменяет работу. Клуб даёт среду, практику, инструменты и людей. Что из этого попадёт в вашу работу, зависит от вас.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Сколько стоит</h2>
+<div class="price"><span class="num">1 990 ₽</span><span class="per">в месяц · отмена в любой момент</span></div>
+<p>Для сравнения. Один курс внутри клуба - по Telegram для экспертов, 36 уроков - продавался отдельно за <span class="money">50 000 ₽</span>. Он входит в подписку вместе с остальными пятью.</p>
+<p>Дальше простая арифметика. <span class="money">1 990 ₽</span> - это меньше, чем разница в комиссии, которую вы отдаёте, когда не находите аргумента и снижаетесь. На эфире агенты называли свой разрыв с самым дешёвым риэлтором города: от 50 до <span class="money">100 тысяч</span> рублей. Одна несостоявшаяся уступка окупает подписку на несколько лет вперёд.</p>
+<p>Я не обещаю, что вы перестанете снижаться. Обещаю, что здесь есть, где взять аргументы и посмотреть, как это делают другие.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Условия</h2>
+<p>Подписка продлевается ежемесячно автоматически. Покупать год не нужно.</p>
+<p>Отключить можно самостоятельно через бот в любой момент, без звонков, писем и разговоров с менеджером.</p>
+<p>Это сделано намеренно. Я не хочу держать людей договором. Если клуб перестанет быть вам полезен, вы уйдёте, и это нормально. Мне интереснее, чтобы вы оставались, пока он работает.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Почему имеет смысл заходить сейчас</h2>
+<p>Честно: искусственного дедлайна здесь нет, цена не поднимается через сутки, места не заканчиваются.</p>
+<p>Причина простая. Живые эфиры, тренировка и мастермайнд идут по расписанию каждую неделю и не повторяются. Записи потом остаются в базе, но участие в живом разборе, где можно задать свой вопрос по своей ситуации, доступно только тем, кто внутри в этот момент.</p>
+<p>Зайдя сейчас, вы попадаете на встречи этого месяца, а не только в архив прошлых.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Что вы получаете за <span class="money">1 990 ₽</span></h2>
+<p>Не обязанность посмотреть сто часов материалов.</p>
+<p>Доступ к среде, где можно:</p>
+<ul><li>каждую неделю разбирать новую рабочую тему;</li><li>видеть, как сильные агенты решают задачи, которые стоят перед вами;</li><li>тренировать конкретные навыки на практических встречах;</li><li>забирать готовые гайды, чек-листы и комплекты документов;</li><li>задать вопрос по своей сделке и получить ответ;</li><li>обратиться к юристу и налоговому специалисту;</li><li>находить партнёров в других регионах;</li><li>возвращаться к базе материалов тогда, когда они реально понадобились.</li></ul>
+<p>И всё это параллельно основной работе, без необходимости из неё выпадать.</p>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Что произойдёт после оплаты</h2>
+<ol><li>Оплачиваете подписку.</li><li>Бот открывает доступ на платформу app.bazarealtor.ru и в закрытый чат резидентов.</li><li>Вы попадаете на текущую тему недели и ко всей накопленной базе материалов сразу.</li><li>Дальше пользуетесь по мере появления задач.</li></ol>
+<div class="tally" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i class='me'></i><i></i><i></i><i></i></div>
+<h2>Вопрос теперь только один</h2>
+<p>Будет ли собственник видеть разницу между вами и агентом, который берёт втрое меньше.</p>
+<p>От ответа зависит, придётся ли вам снижаться в следующий раз. И в следующий после него.</p>
+<div class="endmark">БАЗА.КЛУБ</div>
+<p><strong><span class="money">1 990 ₽</span> в месяц</strong></p>
+<p>Ежемесячное автопродление. Отмена через бот в любой момент.</p>
+<div class="cta"><a href="https://t.me/bazarealtorclub_bot" target="_blank" rel="noopener">Стать резидентом База.Клуб →</a><span class="sub">Ежемесячное автопродление · Отмена через бот в любой момент</span></div>
+  </article>
+
+  <footer>
+      БАЗА.КЛУБ - экосистема для тех, кто строит карьеру<br>
+      в недвижимости на фундаменте знаний и профессионализма.<br><br>
+      ИП Левченко М.О. · ИНН 561142026777<br>
+      <a href="mailto:levchenko.realty@gmail.com">levchenko.realty@gmail.com</a><br>
+      <a href="https://drive.google.com/file/d/18iDXVrPfM6HQOW_AUPavjoDwlaj6OLXV/view" target="_blank" rel="noopener">Публичная оферта</a> ·
+      <a href="https://drive.google.com/file/d/1xKrc7xupjTBWfUR8GrpAJNF_83yIbbxx/view" target="_blank" rel="noopener">Обработка персональных данных</a>
+  </footer>
+</main>
+
+<script>
+(function(){
+  var p=document.getElementById('p');
+  function u(){
+    var h=document.documentElement,
+        m=(h.scrollHeight-h.clientHeight);
+    p.style.width=(m>0?(h.scrollTop/m)*100:0)+'%';
+  }
+  addEventListener('scroll',u,{passive:true}); addEventListener('resize',u); u();
+})();
+</script>
+</body>
+</html>
